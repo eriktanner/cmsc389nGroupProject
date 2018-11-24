@@ -18,14 +18,9 @@
 
 				<label for="password">Password: </label>
 				<input type="email" id="email" name="email" placeholder="testudo@terpmail.umd.edu">
-				<br>
-
-				<input type= "submit" name ="login" value= "Login">
-				<input type= "button" onclick="location.href='register.php';" name = "register" value= "Register">	
-			
 			</form>
 
-		</div>	
+		</div>
 
 	</body>
 </html>
