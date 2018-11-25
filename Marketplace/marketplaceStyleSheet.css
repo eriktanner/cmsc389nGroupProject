@@ -3,14 +3,14 @@ body {
 	margin: auto;
 }
 
-.container {
+.containerBody {
 	width: 960px;
-	margin 0 auto;
+	margin: 100px;
 }
 
 .header {
 	width: 100%;
-	top 0;
+	top: 0;
 	position: fixed;
 }
 
