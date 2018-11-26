@@ -1,0 +1,38 @@
+.header {
+	font-size: 20px;
+	font-weight: 8px;
+	border-style: outset;
+	border-width: 1px;
+	width: 100%;
+	top: 0;
+	position: fixed;
+}
+
+.logo {
+	float: left;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+li {
+	list-style: none;
+	float: left;
+	margin-left: 20px;
+	padding-top: 28px;
+}
+
+.nav {
+	float: center;
+}
+
+input[type=text] {
+	border: 2px solid #999;
+  	border-radius: 3px;
+  	padding: 9px;
+  	font-size:15px;
+
+  	-webkit-appearance: none;
+}
