@@ -32,4 +32,9 @@ li {
 
 .nav {
 	float: center;
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+	background-color: red;
+    color: white;
 }
