@@ -9,7 +9,7 @@ function generateItems() {
 	var body = "<tr>";
 
 
-	for (let i = 0; i < 20; i++) {
+	for (let i = 0; i < 30; i++) {
 		body += "<td>" + generateItem("pillow") + "</td>";
 	}
 

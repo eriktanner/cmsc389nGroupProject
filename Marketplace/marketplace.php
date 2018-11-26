@@ -32,7 +32,7 @@
 							  	<option value="Cheapest">$ -> $$$</option>
 							  	<option value="Expensive">$$$ -> $</option>
 							</select></li>
-						<li style="padding-left: 25px;"><a href="#">Profile</li>
+						<li style="padding-left: 25px;"><a href="../Profile/profile.php">Profile</li>
 						<li><a href="#">Sign Out</li>	
 						<li><form action="sellItem.html"><input type="submit" value="Sell item" /></form></li>
 
