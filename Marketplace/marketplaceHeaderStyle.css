@@ -26,10 +26,6 @@ li {
 	padding-top: 28px;
 }
 
-.nav {
-	float: center;
-}
-
 input[type=text] {
 	border: 2px solid #999;
   	border-radius: 3px;
@@ -38,3 +34,5 @@ input[type=text] {
 
   	-webkit-appearance: none;
 }
+
+

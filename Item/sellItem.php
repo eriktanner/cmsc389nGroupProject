@@ -34,7 +34,7 @@
 				<p><b>Price: </b>{$price}</p>
 				<p><b>Date: </b>{$date}</p>
 
-				<form action="marketplace.php"">
+				<form action="../Marketplace/marketplace.php"">
 					<input value="Return to marketplace" type="Submit" name="return">
 				</form> 
 			</div>

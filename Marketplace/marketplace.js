@@ -6,22 +6,21 @@ function main() {
 }
 
 function generateItems() {
-	var body = "<tr>";
+	var body = "";
 
 
 	for (let i = 0; i < 30; i++) {
-		body += "<td>" + generateItem("pillow") + "</td>";
+		body += generateItem("pillow");
 	}
 
 
-	body += "</tr>";
 	document.getElementById("span").innerHTML = body;
 	
 }
 
 function generateItem(name) {
-	var body = "<div class=\"containerItemBorder\">";
-	body += "<div class=\"containerItem\">";
+	var body = "<div class=\"containerItemBorder\" onclick=\"location.href='../Item/itemDetails.php';\">";
+	body += "<div class=\"containerItem\" >";
 	body += genImage("pillow");
 	body += genItemTitle("Red Pillow");
 	body += genItemPrice("15.50");

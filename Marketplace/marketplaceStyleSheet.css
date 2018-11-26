@@ -23,6 +23,7 @@ body {
 	border-width: 1px;
 	border-color: #D3D3D3;
 	float: left;
+	z-index: 3;
 }
 
 .price {
@@ -38,3 +39,4 @@ body {
 	font-size: 23px;
 	font-family: "sans-serif";
 }
+

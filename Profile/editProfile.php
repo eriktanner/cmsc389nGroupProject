@@ -2,7 +2,7 @@
 <html lang = "en">
 	<head>
 		<title>Sell Item</title>
-		<link rel="stylesheet" href="../Marketplace/marketplaceStyleSheet.css">
+		<link rel="stylesheet" href="marketplaceStyleSheet.css">
 		<meta charset="utf-8">
 	</head>
 
@@ -15,7 +15,7 @@
 			</div>
 		</div>
 		<div class="containerBody">	
-			<h1>Sell Item</h1>
+			<h1>Edit Profile</h1>
 			<!--Need to add Image and Category-->
 			<form action="sellItem.php" method="post">
 				<label for="itemName">Name:</label>
@@ -29,7 +29,7 @@
 				<br>
 				<input type="submit" value="Submit" name="postItem">
 				<input type="reset" value="Reset">
-				<input type="button" onclick="location.href='../Marketplace/marketplace.php';" value="Cancel">
+				<input type="button" onclick="location.href='profile.php';" value="Cancel">
 			</form>
 		</div>
 	</body>

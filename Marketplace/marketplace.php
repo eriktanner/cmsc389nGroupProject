@@ -15,7 +15,7 @@
 					<img src="../Images/umd_hub_red.jpg" alt = "UmdHub" height = 75>
 				</div>
 				
-				<div class="nav1">
+				<div class="nav">
 					<ul>
 						<li style="padding-left: 55px;"><a href="#">All</li>
 						<li><a href="#">Clothing</li>
@@ -88,13 +88,12 @@
 		?>
 			<div class="content">
 					<span id="span"></span>	
+
+				
 			</div>
 
-
-			
-					
-
 		</div>
+
 
 
 

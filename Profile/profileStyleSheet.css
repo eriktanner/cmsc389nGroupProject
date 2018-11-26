@@ -1,0 +1,136 @@
+.outerBox {
+  padding-top: 40px;
+  padding-left: 20px;
+}
+
+.box {
+  width:400px;
+  height:auto;
+  margin:0  auto;
+  border: 2px  solid #f1f1f1;
+  border-radius: 25px;
+  padding: 20px;
+  float: left;
+  position: absolute;
+}
+
+.main {
+  border-top: solid red;
+  border-width: 2px;
+  position: relative;
+}
+
+h1 {
+  text-align: center;
+  font-family: sans-serif;
+  font-style: Arial;
+  font-size: 22px;
+}
+
+label {
+  font-family: sans-serif;
+  font-style: Arial;
+  font-size: 14px;
+}
+
+.subtext {
+  font-family: sans-serif;
+  font-style: Arial;
+  font-size: 12px;
+  color: grey;
+}
+
+input[type=button],input[type=submit] {
+    background-color: red;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border-style: solid;
+    border-color: red;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 100%;
+    font-family: sans-serif;
+    font-style: Arial;
+    font-size: 14px;
+}
+
+input[type=button]:hover,input[type=submit]:hover {
+    background-color: white;
+    color: red;
+    border-style: solid;
+    border-color: red;
+    border-radius: 15px;
+}
+
+input[type=email], input[type=password],
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.name {
+    font-style: "Helvetica";
+    font-size: 24px;
+}
+
+.email {
+    font-style: "Helvetica";
+    font-size: 16px;
+    color: grey;
+}
+
+.yourOrdersTitle {
+  font-style: "Helvetica";
+  font-size: 30px;
+}
+
+body {
+  width: 100%;
+  margin: auto;
+}
+
+.containerBody {
+  padding-left: 450px;
+  width: 1000px;
+  height: 520px;
+  overflow-y: scroll;
+  margin-left: 80px;
+  margin-top: 30px;
+}
+
+.containerItem {
+  margin: 5%;
+  width: 200px;
+  height: 220px;
+  float: left;
+}
+
+.containerItemBorder {
+  width: 220px;
+  height: 250px;
+  border-style: outset;
+  border-width: 1px;
+  border-color: #D3D3D3;
+  float: left;
+  z-index: 3;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 5px;
+  float: right;
+  color: #008000;
+  padding-top: 20px;
+}
+
+.itemTitle {
+  padding-top: 5px;
+  font-size: 23px;
+  font-family: "sans-serif";
+}
+
