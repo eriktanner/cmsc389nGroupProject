@@ -3,6 +3,8 @@
 	<head>
 		<title>UMD Marketplace</title>
 		<link rel="stylesheet" href="marketplaceStyleSheet.css">
+		<link rel="stylesheet" href="marketplaceHeaderStyle.css">
+
 		<meta charset="utf-8">
 	</head>
 
@@ -12,39 +14,37 @@
 				<div class="logo">
 					<img src="../Images/umd_hub_red.jpg" alt = "UmdHub" height = 75>
 				</div>
-				<field>
-					<input type="text" name="searchbar" placeholder="Search for items...">
-					<input type="button" name=submit value="Search">
-				</field>
 				
-				<form action="sellItem.html">
-    				<input type="submit" value="Sell item" />
-				</form>
-				<br>
-				<hr>
-				<div class="nav">
+				<div class="nav1">
 					<ul>
+						<li style="padding-left: 55px;"><a href="#">All</li>
 						<li><a href="#">Clothing</li>
-						<li><a href="#">Health & Beauty</li>
 						<li><a href="#">Electronics</li>
 						<li><a href="#">School Supplies</li>
-						<li><a href="#">Miscellaneous</li>	
+						<li><a href="#">Miscellaneous</li>
+						<li style="padding-top: 18px; padding-left:25px;"><input type="text" placeholder="Search.." id="search_bar" size="60"></li>
+						<li><input type="button" name=submit value="Search"></li>
+						<li><select name="sort">
+								<option value="Newest">Newest</option>
+								<option value="Oldest">Oldest</option>
+							  	<option value="nameUp">Name asc</option>
+								<option value="NameDown">Name desc</option>
+							  	<option value="Cheapest">$ -> $$$</option>
+							  	<option value="Expensive">$$$ -> $</option>
+							</select></li>
+						<li style="padding-left: 25px;"><a href="#">Profile</li>
+						<li><a href="#">Sign Out</li>	
+						<li><form action="sellItem.html"><input type="submit" value="Sell item" /></form></li>
+
+				
+							
 					</ul>
 				</div>
 			</div>
 		</div>
-		<br><br>
+
 		<div class="containerBody">	
-			Sort by:
-			<select name="sort">
-				<option value="Newest">Newest</option>
-				<option value="Oldest">Oldest</option>
-			  	<option value="nameUp">Name asc</option>
-				<option value="NameDown">Name desc</option>
-			  	<option value="Cheapest">$ -> $$$</option>
-			  	<option value="Expensive">$$$ -> $</option>
-			</select>
-			
+
 		<?php
 			function epochToDate($date) {
 				return date("Y-m-d H:i:s", substr($date, 0, 10));
@@ -61,6 +61,8 @@
 			}
 
 			$result = mysqli_query($db_connection,'SELECT * FROM Item ORDER BY Date DESC');
+
+			/*
 
 			echo '<table border="1">';
 			echo '<tr>';
@@ -81,9 +83,20 @@
 				echo "</tr>";
 			}
 			echo "</table>";
+			*/
 
 		?>
+			<div class="content">
+					<span id="span"></span>	
+			</div>
+
+
+			
+					
+
 		</div>
+
+
 
 		<script src="marketplace.js"></script>
 

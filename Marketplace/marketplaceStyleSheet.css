@@ -4,37 +4,37 @@ body {
 }
 
 .containerBody {
-	width: 960px;
+	width: 1700px;
 	margin: 100px;
+	height: 500px;
 }
 
-.header {
-	width: 100%;
-	top: 0;
-	position: fixed;
-}
-
-.logo {
+.containerItem {
+	margin: 5%;
+	width: 200px;
+	height: 220px;
 	float: left;
 }
 
-a {
-	text-decoration: none;
-	color: #000;
-}
-
-li {
-	list-style: none;
+.containerItemBorder {
+	width: 220px;
+	height: 250px;
+	border-style: outset;
+	border-width: 1px;
+	border-color: #D3D3D3;
 	float: left;
-	margin-left: 15px;
-	padding-top: 30px;
 }
 
-.nav {
-	float: center;
-	list-style-type: none;
-    margin: 0;
-    padding: 0;
-	background-color: red;
-    color: white;
+.price {
+	font-size: 22px;
+	font-weight: 5px;
+	float: right;
+	color: #008000;
+	padding-top: 20px;
+}
+
+.itemTitle {
+	padding-top: 5px;
+	font-size: 23px;
+	font-family: "sans-serif";
 }
