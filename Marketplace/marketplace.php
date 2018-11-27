@@ -37,8 +37,8 @@
 									<option value="Price DESC">$$$ -> $</option>
 								</select></li>
 							<li><input type="submit" name="sort" value="Sort"</li>
-						</form>
-						<li style="padding-left: 0px; font-family: sans-serif;"><a href="../Profile/profile.php"><h5>Profile</h5></li>
+						</form><br>
+						<li style="padding-left: 50px; font-family: sans-serif;"><a href="../Profile/profile.php"><h5>Profile</h5></li>
 						<li style="font-family: sans-serif;"><a href="#"><h5>Sign Out</h5></li>
 						<li><form action="../Item/sellItem.html"><input type="submit" value="Sell Item" /></form></li>
 
