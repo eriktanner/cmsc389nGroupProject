@@ -36,7 +36,7 @@
 
 				<form action="../Marketplace/marketplace.php"">
 					<input value="Return to marketplace" type="Submit" name="return">
-				</form> 
+				</form>
 			</div>
 EOPAGE;
         }

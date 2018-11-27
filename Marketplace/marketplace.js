@@ -15,7 +15,7 @@ function generateItems() {
 
 
 	document.getElementById("span").innerHTML = body;
-	
+
 }
 
 function generateItem(name) {

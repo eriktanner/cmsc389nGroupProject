@@ -14,7 +14,7 @@
 				<div class="logo">
 					<img src="../Images/umd_hub_red.jpg" alt = "UmdHub" height = 75>
 				</div>
-				
+
 				<div class="nav">
 					<ul>
 						<li style="padding-left: 55px;"><a href="#">All</li>
@@ -33,23 +33,26 @@
 							  	<option value="Expensive">$$$ -> $</option>
 							</select></li>
 						<li style="padding-left: 25px;"><a href="../Profile/profile.php">Profile</li>
-						<li><a href="#">Sign Out</li>	
+						<li><a href='../Login/signOut.php'>Sign Out</li>
 						<li><form action="sellItem.html"><input type="submit" value="Sell item" /></form></li>
 
-				
-							
+
+
 					</ul>
 				</div>
 			</div>
 		</div>
 
-		<div class="containerBody">	
+		<div class="containerBody">
 
 		<?php
+		session_start();
+		if (isset($_SESSION['user_id'])) {
+
 			function epochToDate($date) {
 				return date("Y-m-d H:i:s", substr($date, 0, 10));
 			}
-			
+
 			$host = "localhost";
 			$user = "admin";
 			$password = "EoqNS14knT98sak6";
@@ -62,8 +65,8 @@
 
 			$result = mysqli_query($db_connection,'SELECT * FROM Item ORDER BY Date DESC');
 
-			/*
 
+/*
 			echo '<table border="1">';
 			echo '<tr>';
 			echo '<th>Item Name</th>';
@@ -84,12 +87,12 @@
 			}
 			echo "</table>";
 			*/
-
+}
 		?>
 			<div class="content">
-					<span id="span"></span>	
+					<span id="span"></span>
 
-				
+
 			</div>
 
 		</div>
