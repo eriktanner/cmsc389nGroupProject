@@ -12,16 +12,17 @@
 		<div class="header">
 			<div class="containerHeader">
 				<div class="logo">
-					<img src="../Images/umd_hub_red.jpg" alt = "UmdHub" height = 75>
+					<img src="../Images/umd_hub_red.jpg" onclick="location.href='../Marketplace/marketplace.php';" alt = "UmdHub" height = 75>
 				</div>
 
 				<div class="nav">
 					<ul>
-						<li style="padding-left: 55px;"><a href="#">All</li>
-						<li><a href="#">Clothing</li>
-						<li><a href="#">Electronics</li>
-						<li><a href="#">School Supplies</li>
-						<li><a href="#">Miscellaneous</li>
+						<li style="padding-left: 55px;"><a href="marketplace.php">All</li>
+						<li><a href="marketplace.php?category=Clothing">Clothing</li>
+						<li><a href="marketplace.php?category=Electronics">Electronics</li>
+						<li><a href="marketplace.php?category=SchoolSupplies">School Supplies</li>
+						<li><a href="marketplace.php?category=Miscellaneous">Miscellaneous</li>
+						<li><a href="#"></li>
 						<form action = "<?php $_SERVER['PHP_SELF'] ?>" method="GET">
 							<li style="padding-top: 18px; padding-left:25px;"><input type="text" placeholder="Search.." id="search_bar" name="searchVal" size="40"></li>
 							<li><input type="submit" name="search" value="Search"></li>
@@ -32,8 +33,8 @@
 									<option value="Date ASC">Oldest</option>
 									<option value="Name ASC">A-Z</option>
 									<option value="Name DESC">Z-A</option>
-									<option value="Price ASC">$ -> $$$</option>
-									<option value="Price DESC">$$$ -> $</option>
+									<option value="Price ASC">Cheapest</option>
+									<option value="Price DESC">Expensive</option>
 								</select></li>
 							<li><input type="submit" name="sort" value="sort"</li>
 						</form>
@@ -165,6 +166,17 @@
 				if ($search != '') {
 					$result = $result . ' WHERE Name Like "%' . $search . '%"';
 				}
+
+
+				if (isset($_GET["category"])) {
+
+					$category = $_GET["category"];
+
+					if ($category == 'Clothing' || $category == 'Electronics' || $category == 'SchoolSupplies' || $category == 'Miscellaneous') {
+						$result = $result . ' WHERE Category = "' . $category . '"';
+					}
+				}
+
 							  
 				if ($sort != '') {
 					$result = $result . ' ORDER BY ' . $sort;
@@ -172,7 +184,7 @@
 					$result = $result . ' ORDER BY Date DESC';
 				}
 
-				return mysqli_query($db_connection, $result);;
+				return mysqli_query($db_connection, $result);
 			}
 
 			function generateItems($filteredResult) {
@@ -183,14 +195,14 @@
 					$body .= generateItem($row);
 				}
 
-				echo $body;
-				
+				echo $body;	
 			}
 
 			function generateItem($item) {
-				$body = "<div class=\"containerItemBorder\" onclick=\"location.href='../Item/itemDetails.php';\">";
+				$id = $item['sid'];
+				$body = "<div class=\"containerItemBorder\" onclick=\"location.href='../Item/Items/item_{$id}.html';\">";
 				$body .= "<div class=\"containerItem\" >";
-				$body .= genImage("pillow");
+				$body .= genImage($item['Image']);
 				$body .= genItemTitle($item['Name']);
 				$body .= genItemPrice($item['Price']);
 				$body .= "</div></div>";
@@ -198,7 +210,7 @@
 			}
 
 			function genImage($name) {
-				return "<img src=\"../Images/${name}.jpg\" width=\"100%\" height=\"70%\">";
+				return '<img height="70%" width="100%" src="data:image/jpeg;base64,'.base64_encode($name).'"/>';
 			}
 
 			function genItemTitle($name) {

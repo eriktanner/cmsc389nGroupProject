@@ -10,21 +10,33 @@
 		<div class="header">
 			<div class="containerHeader">
 				<div class="logo">
-					<img src="../Images/umd_hub_red.jpg" alt = "UmdHub" height = 75>
+					<img src="../Images/umd_hub_red.jpg" onclick="location.href='../Marketplace/marketplace.php';" alt = "UmdHub" height = 75>
 				</div>
 			</div>
 		</div>
 		<div class="containerBody">	
 			<h1>Sell Item</h1>
 			<!--Need to add Image and Category-->
-			<form action="sellItem.php" method="post">
-				<label for="itemName">Item Name:</label>
+			<form action="sellItem.php" method="post" enctype="multipart/form-data">
+				<label for="itemName">Item Name: </label>
  				<input required name="itemName" id="itemName">
 				<br>
-				<label for="price">Price:</label>
+				<label for="price">Price: </label>
  				<input required name="price" id="price" pattern="^([1-9]\d+|[1-9])\.\d{2}$" placeholder="xxx.xx">
 				<br>
-				<label for="description">Description:</label><br>
+				<label for="category">Category: </label>
+				<select name="category">
+					<option value="Clothing">Clothing</option>
+					<option value="Electronics">Electronics</option>
+					<option value="School Supplies">School Supplies</option>
+					<option value="Miscellaneous">Miscellaneous</option>
+				</select>
+				<br>
+				<label for="picture">Image: </label>
+				<input required type="file" name="productImage" id="image">
+				<br>
+				<br>
+				<label for="description">Description: </label><br>
 				<textarea required name="description" id="description" name ="comments" rows="7" cols="50"></textarea>
 				<br>
 				<input type="submit" value="Submit" name="postItem">
