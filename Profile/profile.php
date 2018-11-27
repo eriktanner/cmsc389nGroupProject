@@ -33,7 +33,7 @@
 			<div class="containerBody">	
 				<span class="yourOrdersTitle">Your Orders</span>
 				<div class="content">	
-					<span id="span"></span>	
+					<span id="span"><?php main();?></span>	
 
 				</div>
 
@@ -42,8 +42,70 @@
 		
 
 		</div>
- 		
 
-		<script src="../Marketplace/marketplace.js"></script>
+
+
+
+		<?php
+
+
+			function main() {
+				generateItems(filter());
+			}
+
+			function filter() {
+
+				$host = "localhost";
+				$user = "admin";
+				$password = "EoqNS14knT98sak6";
+				$database = "marketplace";
+
+				$db_connection = new mysqli($host, $user, $password, $database);
+				if ($db_connection->connect_error) {
+					die("Connection failed: " . $db_connection->connect_error);
+				}
+
+				$result = mysqli_query($db_connection,'SELECT * FROM Item');
+				return $result;
+			}
+
+			function generateItems($filteredResult) {
+				$body = "";
+
+				while($row = mysqli_fetch_array($filteredResult))
+				{
+					$body .= generateItem($row);
+				}
+
+				echo $body;
+				
+			}
+
+			function generateItem($item) {
+				$body = "<div class=\"containerItemBorder\" onclick=\"location.href='../Item/itemDetails.php';\">";
+				$body .= "<div class=\"containerItem\" >";
+				$body .= genImage("pillow");
+				$body .= genItemTitle($item['Name']);
+				$body .= genItemPrice($item['Price']);
+				$body .= "</div></div>";
+				return $body;
+			}
+
+			function genImage($name) {
+				return "<img src=\"../Images/${name}.jpg\" width=\"100%\" height=\"70%\">";
+			}
+
+			function genItemTitle($name) {
+				return "<div class=\"itemTitle\">${name}</div>";
+			}
+
+			function genItemPrice($price) {
+				return "<div class=\"price\">\$${price}</div>";
+			}
+
+
+
+		?>
+ 		
 	</body>
 </html>

@@ -22,16 +22,21 @@
 						<li><a href="#">Electronics</li>
 						<li><a href="#">School Supplies</li>
 						<li><a href="#">Miscellaneous</li>
-						<li style="padding-top: 18px; padding-left:25px;"><input type="text" placeholder="Search.." id="search_bar" size="60"></li>
-						<li><input type="button" name=submit value="Search"></li>
-						<li><select name="sort">
-								<option value="Newest">Newest</option>
-								<option value="Oldest">Oldest</option>
-							  	<option value="nameUp">Name asc</option>
-								<option value="NameDown">Name desc</option>
-							  	<option value="Cheapest">$ -> $$$</option>
-							  	<option value="Expensive">$$$ -> $</option>
-							</select></li>
+						<form action = "<?php $_SERVER['PHP_SELF'] ?>" method="GET">
+							<li style="padding-top: 18px; padding-left:25px;"><input type="text" placeholder="Search.." id="search_bar" name="searchVal" size="40"></li>
+							<li><input type="submit" name="search" value="Search"></li>
+						</form>
+						<form action = "<?php $_SERVER['PHP_SELF'] ?>" method="GET">
+							<li><select name="sortVal">
+									<option value="Date DESC">Newest</option>
+									<option value="Date ASC">Oldest</option>
+									<option value="Name ASC">A-Z</option>
+									<option value="Name DESC">Z-A</option>
+									<option value="Price ASC">$ -> $$$</option>
+									<option value="Price DESC">$$$ -> $</option>
+								</select></li>
+							<li><input type="submit" name="sort" value="sort"</li>
+						</form>
 						<li style="padding-left: 25px;"><a href="../Profile/profile.php">Profile</li>
 						<li><a href='../Login/signOut.php'>Sign Out</li>
 						<li><form action="sellItem.html"><input type="submit" value="Sell item" /></form></li>
@@ -44,6 +49,7 @@
 		</div>
 
 		<div class="containerBody">
+
 
 		<?php
 		session_start();
@@ -95,12 +101,93 @@
 
 			</div>
 
+
 		</div>
 
 
 
 
-		<script src="marketplace.js"></script>
+		<?php
+
+			function main() {
+				generateItems(filter());
+			}
+
+			function filter() {
+
+				$host = "localhost";
+				$user = "admin";
+				$password = "EoqNS14knT98sak6";
+				$database = "marketplace";
+
+				$db_connection = new mysqli($host, $user, $password, $database);
+				if ($db_connection->connect_error) {
+					die("Connection failed: " . $db_connection->connect_error);
+				}
+
+				$result = 'SELECT * FROM Item';
+
+				$sort = '';
+				if (isset($_GET["sort"])) {
+					$sort = $_GET["sortVal"];
+				}
+
+				$search = '';
+				if (isset($_GET["search"])) {
+					$search = $_GET["searchVal"];
+				}
+
+				if ($search != '') {
+					$result = $result . ' WHERE Name Like "%' . $search . '%"';
+				}
+
+				if ($sort != '') {
+					$result = $result . ' ORDER BY ' . $sort;
+				} else {
+					$result = $result . ' ORDER BY Date DESC';
+				}
+
+				return mysqli_query($db_connection, $result);;
+			}
+
+			function generateItems($filteredResult) {
+				$body = "";
+
+				while($row = mysqli_fetch_array($filteredResult))
+				{
+					$body .= generateItem($row);
+				}
+
+				echo $body;
+
+			}
+
+			function generateItem($item) {
+				$body = "<div class=\"containerItemBorder\" onclick=\"location.href='../Item/itemDetails.php';\">";
+				$body .= "<div class=\"containerItem\" >";
+				$body .= genImage("pillow");
+				$body .= genItemTitle($item['Name']);
+				$body .= genItemPrice($item['Price']);
+				$body .= "</div></div>";
+				return $body;
+			}
+
+			function genImage($name) {
+				return "<img src=\"../Images/${name}.jpg\" width=\"100%\" height=\"70%\">";
+			}
+
+			function genItemTitle($name) {
+				return "<div class=\"itemTitle\">${name}</div>";
+			}
+
+			function genItemPrice($price) {
+				return "<div class=\"price\">\$${price}</div>";
+			}
+
+
+		?>
+
+
 
 	</body>
 </html>
