@@ -41,18 +41,11 @@ label {
 }
 
 input[type=submit]  {
-
-    background-color: black;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
+    margin-top: 15px;
     border-style: solid;
-    border-color: red;
-    border-radius: 15px;
-    cursor: pointer;
-    width: 100%;
+    border-radius: 3px;
     font-family: sans-serif;
-    font-style: Arial;
+    font-style: sans-serif;
     font-size: 14px;
 }
 
@@ -141,7 +134,7 @@ body {
   font-weight: 5px;
   float: right;
   color: #008000;
-  padding-top: 20px;
+  margin-top: -22px;
 }
 
 .itemTitle {
