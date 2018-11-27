@@ -21,8 +21,8 @@
 				</div>
 			</div>
 
-				<span class="yourOrdersTitle">Your Orders</span>
 			<div class="containerBody">	
+				<span class="yourOrdersTitle">Your Orders</span>
 				<div class="content">	
 					<span id="span"><?php main();?></span>	
 
@@ -107,8 +107,7 @@
 			}
 
 			function generateItem($item) {
-				$id = $item['sid'];
-				$body = "<div class=\"containerItemBorder\" onclick=\"location.href='../Item/Items/item_{$id}.php';\">";
+				$body = "<div class=\"containerItemBorder\" onclick=\"location.href='../Item/itemDetails.php';\">";
 				$body .= "<div class=\"containerItem\" >";
 				$body .= genImage($item['Image']);
 				$body .= genItemTitle($item['Name']);
