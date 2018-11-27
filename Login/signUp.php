@@ -6,7 +6,7 @@
 	$bottom =
 	<<<EOBODY2
 	<div class = "box">
-		<form action="{$_SERVER['PHP_SELF']}" method="post">
+		<form action="{$_SERVER['PHP_SELF']}" method="post" enctype="multipart/form-data">
 			<text class = "subtext"> Email must contain @umd.edu address.
 			Password must contain 8-13 alphanumeric characters. Fields with an asterisk
 			are required. </text><br>
@@ -47,7 +47,7 @@ EOBODY2;
 	  $full_name = $firstName." ".$lastName;
 	  $email = $_POST['email_signUp'];
 	  $password =  $_POST['password_signUp'];
-	  $image = $_POST['profile_pic'];
+	  $image = addslashes(file_get_contents($_FILES['profile_pic']['tmp_name']));
 	  if (strpos($email, "umd.edu") !== false) {
 			$sql = "SELECT *
 				FROM Profile WHERE Email = '$email'";
@@ -58,8 +58,8 @@ EOBODY2;
 					</div><br>";
 				}
 				else {
-			    $sql = "INSERT INTO profile (Name, Email, Password)
-			    VALUES ('$full_name', '$email', '$password')";
+			    $sql = "INSERT INTO profile (Name, Email, Password, ProPic)
+			    VALUES ('$full_name', '$email', '$password', '$image')";
 		    	if ($db_connection->query($sql) === TRUE) {
 						$_SESSION['new_sign'] = true;
 						header('Location: login.php');
