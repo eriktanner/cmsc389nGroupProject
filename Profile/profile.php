@@ -49,6 +49,7 @@
 		<?php
 
 
+
 			function main() {
 				generateItems(filter());
 			}
@@ -65,7 +66,15 @@
 					die("Connection failed: " . $db_connection->connect_error);
 				}
 
-				$result = mysqli_query($db_connection,'SELECT * FROM Item');
+
+				session_start();
+
+				$session_userid = $_SESSION['user_id'];
+
+				$query = 'SELECT * FROM Item WHERE uid = "' . $session_userid . '"';
+
+				$result = mysqli_query($db_connection, $query);
+
 				return $result;
 			}
 
@@ -86,6 +95,7 @@
 				$body .= "<div class=\"containerItem\" >";
 				$body .= genImage("pillow");
 				$body .= genItemTitle($item['Name']);
+				$body .= genRemoveItem($item['sid']);
 				$body .= genItemPrice($item['Price']);
 				$body .= "</div></div>";
 				return $body;
@@ -101,6 +111,10 @@
 
 			function genItemPrice($price) {
 				return "<div class=\"price\">\$${price}</div>";
+			}
+
+			function genRemoveItem($sid) {
+				return "<div class=\"removeItem\"><form action=\"../Item/removeItem.php?sid={$sid}\" method=\"POST\"><input type=\"submit\" value=\"Remove\"></form></div>";
 			}
 
 

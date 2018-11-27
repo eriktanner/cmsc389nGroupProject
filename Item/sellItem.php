@@ -7,6 +7,8 @@
 	</head>
 </html>
 <?php
+	session_start();
+
 	function epochToDate($date) {
 		return date("Y-m-d H:i:s", substr($date, 0, 10));
 	}
@@ -23,7 +25,7 @@
 
 	if (isset($_POST["postItem"])) {
 		$itemName = $_POST['itemName'];
-		$sellerUID = "1";
+		$sellerUID = $_SESSION['user_id'];
         $desc = $_POST['description'];
         $category = $_POST['category'];
 		$image = addslashes(file_get_contents($_FILES['productImage']['tmp_name']));
@@ -57,8 +59,11 @@ EOPAGE;
 		
 		echo $body;
 	}
-	
+
 	function createPage($itemName, $sid, $sellerUID, $desc, $price, $date, $image) {
+
+		
+
 		$host = "localhost";
 		$user = "admin";
 		$password = "EoqNS14knT98sak6";
@@ -71,6 +76,12 @@ EOPAGE;
 		$image = mysqli_query($db_connection, "SELECT Image FROM Item WHERE sid = {$sid}");
 		$image = mysqli_fetch_array($image)["Image"];
 		$image = '<img width="100%" height="70%" src="data:image/jpeg;base64,'.base64_encode( $image ).'"/>';
+
+		$sellerName = mysqli_query($db_connection, "SELECT Name FROM profile WHERE uid = {$sellerUID}");
+		$sellerName = mysqli_fetch_array($sellerName)["Name"];
+
+
+		
 
 		$body = <<<EOBODY
 		<!doctype html>
@@ -90,7 +101,10 @@ EOPAGE;
 					<div class="outerBox">
 						<div class = "box">
 							{$image}
-							<input type= "button" onclick="location.href='';" id="../Profile/editProfile" value="Contact Seller"><br>
+							
+							<input type= "button" onclick="location.href='';" id="contact_but" value="Contact Seller">
+
+							<br>
 						
 						</div>
 					</div>
@@ -99,7 +113,7 @@ EOPAGE;
 						
 						<span class="itemTitle">Name: {$itemName}</span>
 						<br>
-						<span class="email">Seller: {$sellerUID}</span>
+						<span class="email">Seller: {$sellerName}</span>
 						<br>
 						<span class="email">Date Posted: {$date}</span>
 						<br>
@@ -116,7 +130,7 @@ EOBODY;
 
 		
 
-		$myFile = "Items/item_".$sid.".html";
+		$myFile = "Items/item_".$sid.".php";
 		$fh = fopen($myFile, 'w');
 		fwrite($fh, $body);
 		fclose($fh);

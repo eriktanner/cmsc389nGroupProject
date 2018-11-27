@@ -40,7 +40,23 @@ label {
   color: grey;
 }
 
-input[type=button],input[type=submit] {
+input[type=submit]  {
+
+    background-color: black;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border-style: solid;
+    border-color: red;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 100%;
+    font-family: sans-serif;
+    font-style: Arial;
+    font-size: 14px;
+}
+
+input[type=button] {
     background-color: red;
     color: white;
     padding: 14px 20px;
@@ -55,7 +71,7 @@ input[type=button],input[type=submit] {
     font-size: 14px;
 }
 
-input[type=button]:hover,input[type=submit]:hover {
+input[type=button]:hover {
     background-color: white;
     color: red;
     border-style: solid;
@@ -134,3 +150,6 @@ body {
   font-family: "sans-serif";
 }
 
+.removeItem {
+  z-index: 4;
+}

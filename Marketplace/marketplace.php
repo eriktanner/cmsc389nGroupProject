@@ -40,7 +40,8 @@
 						</form>
 						<li style="padding-left: 25px;"><a href="../Profile/profile.php">Profile</li>
 						<li><a href='../Login/signOut.php'>Sign Out</li>
-						<li><form action="sellItem.html"><input type="submit" value="Sell item" /></form></li>
+						<li><form action="../Item/sellItem.html"><input type="submit" value="Sell item" /></form></li>
+						<li><a href='#'></li>
 
 
 
@@ -175,7 +176,7 @@
 
 			function generateItem($item) {
 				$id = $item['sid'];
-				$body = "<div class=\"containerItemBorder\" onclick=\"location.href='../Item/Items/item_{$id}.html';\">";
+				$body = "<div class=\"containerItemBorder\" onclick=\"location.href='../Item/Items/item_{$id}.php';\">";
 				$body .= "<div class=\"containerItem\" >";
 				$body .= genImage($item['Image']);
 				$body .= genItemTitle($item['Name']);
