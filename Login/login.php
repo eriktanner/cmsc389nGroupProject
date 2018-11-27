@@ -1,9 +1,8 @@
 <!doctype html>
 <?php
-require("../database.php");
-
 session_start();
-
+require("../database.php");
+	$body = "";
 	$middle = "";
 	$bottom =
 	<<<EOBODY2
@@ -32,9 +31,8 @@ if (isset($_POST['login'])) {
 	$sql = "SELECT *
 		FROM Profile WHERE Email = '$email' AND Password = '$password'";
 		$result = $db_connection->query($sql);
-		if ($result !== FALSE) {
-			$_POST = array();
-			$_SESSION['user_id'] = $result->UID;
+		if ($result->num_rows > 0) {
+			$_SESSION['user_id'] = mysqli_fetch_array($result)["UID"];
 			header('Location: ../Marketplace/marketplace.php');
 		}
 		else {
@@ -42,9 +40,6 @@ if (isset($_POST['login'])) {
 			Username or Password Invalid.
 			</div><br>";
 		}
-}
-if (isset($_SESSION['user_id'])) {
-	unset($_SESSION['user_id']);
 }
 	$body =
 	<<<EOBODY
