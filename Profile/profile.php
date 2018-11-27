@@ -4,6 +4,7 @@
 		<title>Profile</title>
 		<link rel="stylesheet" href="profileStyleSheet.css">
 		<meta charset="utf-8">
+		<?php session_start(); ?>
 	</head>
 	<body>
 
@@ -17,14 +18,8 @@
 				
 					<img src="../Images/pillow.jpg" width="100%" height="70%">
 							
-				    <br>
-				    <span class="name">
-				    	John Jonathan
-				    </span>
-				    <br>
-				    <span class="email">
-				    	johnyj@terpmail.umd.edu
-				    </span>
+					<br>
+					<?php getUserData(); ?>
 				    <input type= "button" onclick="location.href='editProfile.php';" id="editProfile" value="Edit Profile"><br>
 				
 				</div>
@@ -54,6 +49,33 @@
 				generateItems(filter());
 			}
 
+			function getUserData() {
+				$host = "localhost";
+				$user = "admin";
+				$password = "EoqNS14knT98sak6";
+				$database = "marketplace";
+
+				$session_userid = $_SESSION['user_id'];
+
+				$db_connection = new mysqli($host, $user, $password, $database);
+				if ($db_connection->connect_error) {
+					die("Connection failed: " . $db_connection->connect_error);
+				}
+
+				$query = 'SELECT * FROM profile WHERE uid = "' . $session_userid .'"';
+				$userResult = mysqli_query($db_connection, $query);
+				$userResult = mysqli_fetch_array($userResult);
+				$userName = $userResult['Name'];
+				$userEmail = $userResult['Email'];
+				echo "<span class='name'>";
+				echo $userName;
+				echo "</span>";
+				echo "<br>";
+				echo "<span class='email'>";
+				echo $userEmail;
+				echo "</span>";
+			}
+
 			function filter() {
 
 				$host = "localhost";
@@ -66,8 +88,6 @@
 					die("Connection failed: " . $db_connection->connect_error);
 				}
 
-
-				session_start();
 
 				$session_userid = $_SESSION['user_id'];
 
