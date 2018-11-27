@@ -2,11 +2,25 @@
   width:50%;
   height:auto;
   margin:0  auto;
-  border: 2px  solid #f1f1f1;
+  border: 2px  solid;
   border-radius: 15px;
   border-color: red;
   padding: 15px;
   background-color: pink;
+  font-family: sans-serif;
+  font-style: Arial;
+  font-size: 14px;
+}
+
+.class2 {
+  width:50%;
+  height:auto;
+  margin:0  auto;
+  border: 2px  solid;
+  border-radius: 15px;
+  border-color: green;
+  padding: 15px;
+  background-color: #90EE90;
   font-family: sans-serif;
   font-style: Arial;
   font-size: 14px;

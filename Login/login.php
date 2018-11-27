@@ -23,6 +23,12 @@ require("../database.php");
 	</html>
 EOBODY2;
 
+if (isset($_SESSION['new_sign'])) {
+	$middle = "<br><div class = 'class2'>
+	Thank you for signing up, login to get started!
+	</div><br>";
+}
+
 if (isset($_POST['login'])) {
 	$db_connection = connectDatabase();
 	$email = $_POST['email'];
@@ -33,6 +39,7 @@ if (isset($_POST['login'])) {
 		$result = $db_connection->query($sql);
 		if ($result->num_rows > 0) {
 			$_SESSION['user_id'] = mysqli_fetch_array($result)["UID"];
+			unset($_SESSION['new_sign']);
 			header('Location: ../Marketplace/marketplace.php');
 		}
 		else {
@@ -41,6 +48,7 @@ if (isset($_POST['login'])) {
 			</div><br>";
 		}
 }
+
 	$body =
 	<<<EOBODY
 	<html lang = "en">

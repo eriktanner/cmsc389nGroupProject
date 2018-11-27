@@ -1,5 +1,6 @@
 <!doctype html>
 	<?php
+	session_start();
 	require("../database.php");
 	$middle = "";
 	$bottom =
@@ -48,12 +49,22 @@ EOBODY2;
 	  $password =  $_POST['password_signUp'];
 	  $image = $_POST['profile_pic'];
 	  if (strpos($email, "umd.edu") !== false) {
-	    $sql = "INSERT INTO profile (Name, Email, Password)
-	    VALUES ('$full_name', '$email', '$password')";
-
-	    if ($db_connection->query($sql) === TRUE) {
-			header('Location: login.php');
-			}
+			$sql = "SELECT *
+				FROM Profile WHERE Email = '$email'";
+				if ($db_connection->query($sql)->num_rows > 0) {
+					$middle = "<br><div class = 'class1'>
+					There already exists an account with this email address. Please enter
+					a different email address.
+					</div><br>";
+				}
+				else {
+			    $sql = "INSERT INTO profile (Name, Email, Password)
+			    VALUES ('$full_name', '$email', '$password')";
+		    	if ($db_connection->query($sql) === TRUE) {
+						$_SESSION['new_sign'] = true;
+						header('Location: login.php');
+					}
+				}
 		}
 	  else {
 			$middle =	"<br><div class = 'class1'>
