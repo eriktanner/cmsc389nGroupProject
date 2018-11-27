@@ -41,7 +41,6 @@ label {
 }
 
 input[type=submit]  {
-  position: absolute;
   margin-top: 22px;
 
     border-style: solid;
@@ -96,6 +95,7 @@ input[type=text] {
 }
 
 .yourOrdersTitle {
+  margin-left: 530px;
   font-style: "Helvetica";
   font-size: 30px;
 }
@@ -136,7 +136,7 @@ body {
   font-weight: 5px;
   float: right;
   color: #008000;
-  padding-top: 20px;
+  margin-top: -22px;
 }
 
 .itemTitle {

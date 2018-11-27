@@ -30,8 +30,8 @@
 				</div>
 			</div>
 
-			<div class="containerBody">	
 				<span class="yourOrdersTitle">Your Orders</span>
+			<div class="containerBody">	
 				<div class="content">	
 					<span id="span"><?php main();?></span>	
 
@@ -91,7 +91,8 @@
 			}
 
 			function generateItem($item) {
-				$body = "<div class=\"containerItemBorder\" onclick=\"location.href='../Item/itemDetails.php';\">";
+				$id = $item['sid'];
+				$body = "<div class=\"containerItemBorder\" onclick=\"location.href='../Item/Items/item_{$id}.php';\">";
 				$body .= "<div class=\"containerItem\" >";
 				$body .= genImage("pillow");
 				$body .= genItemTitle($item['Name']);
