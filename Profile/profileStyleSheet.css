@@ -41,14 +41,19 @@ label {
 }
 
 input[type=submit]  {
-  position: absolute;
-  margin-top: 22px;
 
+    background-color: black;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
     border-style: solid;
-    border-radius: 3px;
+    border-color: red;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 100%;
     font-family: sans-serif;
     font-style: Arial;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 input[type=button] {
