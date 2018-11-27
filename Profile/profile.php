@@ -15,10 +15,6 @@
 	    	</div>
 	    	<div class="outerBox">
 				<div class = "box">
-				
-					<img src="../Images/pillow.jpg" width="100%" height="70%">
-							
-					<br>
 					<?php getUserData(); ?>
 				    <input type= "button" onclick="location.href='editProfile.php';" id="editProfile" value="Edit Profile"><br>
 				
@@ -32,15 +28,9 @@
 
 				</div>
 
-
-			</div>
-		
+			</div>		
 
 		</div>
-
-
-
-
 		<?php
 
 
@@ -67,6 +57,12 @@
 				$userResult = mysqli_fetch_array($userResult);
 				$userName = $userResult['Name'];
 				$userEmail = $userResult['Email'];
+				$userImage = $userResult['ProPic'];
+
+				$image = '<img height="400px" src="data:image/jpeg;base64,'.base64_encode( $userImage ).'"/>';
+				
+				echo $image;
+				echo "<br>";
 				echo "<span class='name'>";
 				echo $userName;
 				echo "</span>";
@@ -113,7 +109,7 @@
 			function generateItem($item) {
 				$body = "<div class=\"containerItemBorder\" onclick=\"location.href='../Item/itemDetails.php';\">";
 				$body .= "<div class=\"containerItem\" >";
-				$body .= genImage("pillow");
+				$body .= genImage($item['Image']);
 				$body .= genItemTitle($item['Name']);
 				$body .= genRemoveItem($item['sid']);
 				$body .= genItemPrice($item['Price']);
@@ -121,8 +117,8 @@
 				return $body;
 			}
 
-			function genImage($name) {
-				return "<img src=\"../Images/${name}.jpg\" width=\"100%\" height=\"70%\">";
+			function genImage($image) {
+				return '<img height="400px" src="data:image/jpeg;base64,'.base64_encode( $image ).'"/>';
 			}
 
 			function genItemTitle($name) {
