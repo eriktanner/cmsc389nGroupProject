@@ -23,7 +23,7 @@
 						<li><a href="#">School Supplies</li>
 						<li><a href="#">Miscellaneous</li>
 						<form action = "<?php $_SERVER['PHP_SELF'] ?>" method="GET">
-							<li style="padding-top: 18px; padding-left:25px;"><input type="text" placeholder="Search.." id="search_bar" name="searchVal" size="60"></li>
+							<li style="padding-top: 18px; padding-left:25px;"><input type="text" placeholder="Search.." id="search_bar" name="searchVal" size="40"></li>
 							<li><input type="submit" name="search" value="Search"></li>
 						</form>
 						<form action = "<?php $_SERVER['PHP_SELF'] ?>" method="GET">
@@ -39,7 +39,7 @@
 						</form>
 						<li style="padding-left: 25px;"><a href="../Profile/profile.php">Profile</li>
 						<li><a href="#">Sign Out</li>
-						<li><form action="sellItem.html"><input type="submit" value="Sell item" /></form></li>
+						<li><form action="../Item/sellItem.html"><input type="submit" value="Sell item" /></form></li>
 
 
 

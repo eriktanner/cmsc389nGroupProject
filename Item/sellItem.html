@@ -18,11 +18,11 @@
 			<h1>Sell Item</h1>
 			<!--Need to add Image and Category-->
 			<form action="sellItem.php" method="post">
-				<label for="itemName">Name:</label>
+				<label for="itemName">Item Name:</label>
  				<input required name="itemName" id="itemName">
 				<br>
 				<label for="price">Price:</label>
- 				<input required name="price" id="price">
+ 				<input required name="price" id="price" pattern="^([1-9]\d+|[1-9])\.\d{2}$" placeholder="xxx.xx">
 				<br>
 				<label for="description">Description:</label><br>
 				<textarea required name="description" id="description" name ="comments" rows="7" cols="50"></textarea>
