@@ -49,7 +49,7 @@
 
 				<form action="../Marketplace/marketplace.php"">
 					<input value="Return to marketplace" type="Submit" name="return">
-				</form> 
+				</form>
 			</div>
 
 EOPAGE;
@@ -57,8 +57,7 @@ EOPAGE;
 		
 		echo $body;
 	}
-
-
+	
 	function createPage($itemName, $sid, $sellerUID, $desc, $price, $date, $image) {
 		$host = "localhost";
 		$user = "admin";

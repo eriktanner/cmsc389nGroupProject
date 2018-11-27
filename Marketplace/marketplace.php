@@ -39,8 +39,8 @@
 							<li><input type="submit" name="sort" value="sort"</li>
 						</form>
 						<li style="padding-left: 25px;"><a href="../Profile/profile.php">Profile</li>
-						<li><a href="#">Sign Out</li>
-						<li><form action="../Item/sellItem.html"><input type="submit" value="Sell item" /></form></li>
+						<li><a href='../Login/signOut.php'>Sign Out</li>
+						<li><form action="sellItem.html"><input type="submit" value="Sell item" /></form></li>
 
 
 
@@ -49,81 +49,56 @@
 			</div>
 		</div>
 
-		<div class="containerBody">	
+		<div class="containerBody">
 
 
 		<?php
-				/*
+		session_start();
+		if (isset($_SESSION['user_id'])) {
 
-		<div class="containerBody">
+			function epochToDate($date) {
+				return date("Y-m-d H:i:s", substr($date, 0, 10));
+			}
 
-			<?php=
-				function epochToDate($date) {
-					return date("Y-m-d H:i:s", substr($date, 0, 10));
-				}
+			$host = "localhost";
+			$user = "admin";
+			$password = "EoqNS14knT98sak6";
+			$database = "marketplace";
 
-				$host = "localhost";
-				$user = "admin";
-				$password = "EoqNS14knT98sak6";
-				$database = "marketplace";
+			$db_connection = new mysqli($host, $user, $password, $database);
+			if ($db_connection->connect_error) {
+				die("Connection failed: " . $db_connection->connect_error);
+			}
 
-				$db_connection = new mysqli($host, $user, $password, $database);
-				if ($db_connection->connect_error) {
-					die("Connection failed: " . $db_connection->connect_error);
-				}
-
-
-				
-
-				$query = 'SELECT * FROM Item';
-							  
-				$sort = '';
-				if (isset($_POST["sort"])) {
-					$sort = $_POST["sortVal"];
-				}
-							  
-				$search = '';
-				if (isset($_POST["search"])) {
-					$search = $_POST["searchVal"];
-				}
-							  
-				if ($search != '') {
-					$query = $query . ' WHERE Name Like "%' . $search . '%"';
-				}
-							  
-				if ($sort != '') {
-					$query = $query . ' ORDER BY ' . $sort;
-				} else {
-					$query = $query . ' ORDER BY Date DESC';
-				}
+			$result = mysqli_query($db_connection,'SELECT * FROM Item ORDER BY Date DESC');
 
 
+/*
+			echo '<table border="1">';
+			echo '<tr>';
+			echo '<th>Item Name</th>';
+			echo '<th>Price</th>';
+			echo '<th>Description</th>';
+			echo '<th>Date</th>';
+			echo '</tr>';
 
-				$result = mysqli_query($db_connection, $query);
-
-				echo '<table border="1">';
-				echo '<tr>';
-				echo '<th>Item Name</th>';
-				echo '<th>Price</th>';
-				echo '<th>Description</th>';
-				echo '<th>Date</th>';
-				echo '</tr>';
-
-				while($row = mysqli_fetch_array($result))
-				{
-					$date = epochToDate($row['Date']);
-					echo "<tr>";
-					echo "<td>" . $row['Name'] . "</td>";
-					echo "<td>" . $row['Price'] . "</td>";
-					echo "<td>" . $row['Description'] . "</td>";
-					echo "<td>" . $date . "</td>";
-					echo "</tr>";
-				}
-				echo "</table>";
-				*/
+			while($row = mysqli_fetch_array($result))
+			{
+				$date = epochToDate($row['Date']);
+				echo "<tr>";
+				echo "<td>" . $row['Name'] . "</td>";
+				echo "<td>" . $row['Price'] . "</td>";
+				echo "<td>" . $row['Description'] . "</td>";
+				echo "<td>" . $date . "</td>";
+				echo "</tr>";
+			}
+			echo "</table>";
+			*/
+}
 		?>
 			<div class="content">
-					<span id="span"><?php main();?></span>	
+					<span id="span"><?php main(); ?></span>
+
 
 			</div>
 
@@ -152,21 +127,20 @@
 				}
 
 				$result = 'SELECT * FROM Item';
-							  
+
 				$sort = '';
 				if (isset($_GET["sort"])) {
 					$sort = $_GET["sortVal"];
 				}
-							  
+
 				$search = '';
 				if (isset($_GET["search"])) {
 					$search = $_GET["searchVal"];
 				}
-							  
+
 				if ($search != '') {
 					$result = $result . ' WHERE Name Like "%' . $search . '%"';
 				}
-
 
 				if (isset($_GET["category"])) {
 
@@ -195,7 +169,8 @@
 					$body .= generateItem($row);
 				}
 
-				echo $body;	
+
+				echo $body;
 			}
 
 			function generateItem($item) {

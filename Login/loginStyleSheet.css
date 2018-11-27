@@ -1,3 +1,31 @@
+.class1 {
+  width:50%;
+  height:auto;
+  margin:0  auto;
+  border: 2px  solid;
+  border-radius: 15px;
+  border-color: red;
+  padding: 15px;
+  background-color: pink;
+  font-family: sans-serif;
+  font-style: Arial;
+  font-size: 14px;
+}
+
+.class2 {
+  width:50%;
+  height:auto;
+  margin:0  auto;
+  border: 2px  solid;
+  border-radius: 15px;
+  border-color: green;
+  padding: 15px;
+  background-color: #90EE90;
+  font-family: sans-serif;
+  font-style: Arial;
+  font-size: 14px;
+}
+
 .box {
   width:400px;
   height:auto;
@@ -12,6 +40,7 @@
   border-width: 2px;
 
 }
+
 h1 {
   text-align: center;
   font-family: sans-serif;
@@ -53,6 +82,13 @@ input[type=button]:hover,input[type=submit]:hover {
     border-style: solid;
     border-color: red;
     border-radius: 15px;
+}
+
+input[type=file] {
+  width: 100%;
+  padding: 12px 0px;
+  margin: 8px 0;
+  display: inline-block;
 }
 
 input[type=email], input[type=password],
