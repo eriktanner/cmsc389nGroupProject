@@ -22,11 +22,11 @@
 						<li><a href="#">Electronics</li>
 						<li><a href="#">School Supplies</li>
 						<li><a href="#">Miscellaneous</li>
-						<form action = "<?php $_SERVER['PHP_SELF'] ?>" method="POST">
+						<form action = "<?php $_SERVER['PHP_SELF'] ?>" method="GET">
 							<li style="padding-top: 18px; padding-left:25px;"><input type="text" placeholder="Search.." id="search_bar" name="searchVal" size="60"></li>
 							<li><input type="submit" name="search" value="Search"></li>
 						</form>
-						<form action = "<?php $_SERVER['PHP_SELF'] ?>" method="POST">
+						<form action = "<?php $_SERVER['PHP_SELF'] ?>" method="GET">
 							<li><select name="sortVal">
 									<option value="Date DESC">Newest</option>
 									<option value="Date ASC">Oldest</option>
@@ -153,13 +153,13 @@
 				$result = 'SELECT * FROM Item';
 							  
 				$sort = '';
-				if (isset($_POST["sort"])) {
-					$sort = $_POST["sortVal"];
+				if (isset($_GET["sort"])) {
+					$sort = $_GET["sortVal"];
 				}
 							  
 				$search = '';
-				if (isset($_POST["search"])) {
-					$search = $_POST["searchVal"];
+				if (isset($_GET["search"])) {
+					$search = $_GET["searchVal"];
 				}
 							  
 				if ($search != '') {
