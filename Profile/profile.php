@@ -66,7 +66,7 @@
 				$userEmail = $userResult['Email'];
 				$userImage = $userResult['ProPic'];
 
-				$image = '<img style="max-height: 800px; max-width: 400px; display: block; margin: 0 auto;" height="auto" src="data:image/jpeg;base64,'.base64_encode( $userImage ).'"/>';
+				$image = '<img style="max-height: 500px; max-width: 400px; display: block; margin: 0 auto;" height="auto" src="data:image/jpeg;base64,'.base64_encode( $userImage ).'"/>';
 			
 				echo $image;
 				echo "<br>";
