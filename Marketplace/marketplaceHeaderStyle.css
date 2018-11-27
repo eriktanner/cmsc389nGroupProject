@@ -11,7 +11,7 @@
 
 .logo {
 	float: left;
-	padding-left:40px;
+	padding-left: 10px;
 }
 
 a {
@@ -23,16 +23,36 @@ li {
 	list-style: none;
 	float: left;
 	margin-left: 20px;
-	padding-top: 28px;
+	padding-top: 20px;
 }
 
+
+
 input[type=text] {
-	border: 2px solid #999;
+	border: 1.5px solid #999;
   	border-radius: 3px;
-  	padding: 9px;
-  	font-size:15px;
+  	padding: 8px;
+  	font-size:14px;
 
   	-webkit-appearance: none;
 }
 
+input[type=submit] {
+	color: darkblue;
+	border: 2px solid #999;
+  	border-radius: 4px;
+  	padding: 5px;
+  	font-size:10px;
+
+  	-webkit-appearance: none;
+}
+
+select {
+	border: 1.5px solid #999;
+  	border-radius: 3px;
+  	padding: 8px;
+  	font-size:14px;
+
+  	-webkit-appearance: menulist;
+}
 

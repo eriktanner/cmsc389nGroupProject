@@ -12,18 +12,19 @@
 		<div class="header">
 			<div class="containerHeader">
 				<div class="logo">
-					<img src="../Images/umd_hub_red.jpg" alt = "UmdHub" height = 75>
+					<img src="../Images/umd_hub_red.jpg" alt = "UmdHub" height = 90>
 				</div>
 
 				<div class="nav">
 					<ul>
-						<li style="padding-left: 55px;"><a href="#">All</li>
-						<li><a href="#">Clothing</li>
-						<li><a href="#">Electronics</li>
-						<li><a href="#">School Supplies</li>
-						<li><a href="#">Miscellaneous</li>
+						<li style="padding-left: 15px; font-family: sans-serif;"><a href="#"><h4>All</h4></li>
+						<li style="font-family: sans-serif;"><a href="#"><h4>Clothing</h4></li>
+						<li style="font-family: sans-serif;"><a href="#"><h4>Electronics</h4></li>
+						<li style="font-family: sans-serif;"><a href="#"><h4>School Supplies</h4></li>
+						<li style="font-family: sans-serif;"><a href="#"><h4>Miscellaneous</h4></li>
+						
 						<form action = "<?php $_SERVER['PHP_SELF'] ?>" method="GET">
-							<li style="padding-top: 18px; padding-left:25px;"><input type="text" placeholder="Search.." id="search_bar" name="searchVal" size="40"></li>
+							<li style="padding-top: 18px; padding-left:25px;"><input type="text" placeholder="Search.." id="search_bar" name="searchVal" size="25"></li>
 							<li><input type="submit" name="search" value="Search"></li>
 						</form>
 						<form action = "<?php $_SERVER['PHP_SELF'] ?>" method="GET">
@@ -35,11 +36,11 @@
 									<option value="Price ASC">$ -> $$$</option>
 									<option value="Price DESC">$$$ -> $</option>
 								</select></li>
-							<li><input type="submit" name="sort" value="sort"</li>
+							<li><input type="submit" name="sort" value="Sort"</li>
 						</form>
-						<li style="padding-left: 25px;"><a href="../Profile/profile.php">Profile</li>
-						<li><a href='../Login/signOut.php'>Sign Out</li>
-						<li><form action="sellItem.html"><input type="submit" value="Sell item" /></form></li>
+						<li style="padding-left: 0px; font-family: sans-serif;"><a href="../Profile/profile.php"><h5>Profile</h5></li>
+						<li style="font-family: sans-serif;"><a href="#"><h5>Sign Out</h5></li>
+						<li><form action="../Item/sellItem.html"><input type="submit" value="Sell Item" /></form></li>
 
 
 
@@ -48,56 +49,81 @@
 			</div>
 		</div>
 
-		<div class="containerBody">
+		<div class="containerBody">	
 
 
 		<?php
-		session_start();
-		if (isset($_SESSION['user_id'])) {
+				/*
 
-			function epochToDate($date) {
-				return date("Y-m-d H:i:s", substr($date, 0, 10));
-			}
+		<div class="containerBody">
 
-			$host = "localhost";
-			$user = "admin";
-			$password = "EoqNS14knT98sak6";
-			$database = "marketplace";
+			<?php=
+				function epochToDate($date) {
+					return date("Y-m-d H:i:s", substr($date, 0, 10));
+				}
 
-			$db_connection = new mysqli($host, $user, $password, $database);
-			if ($db_connection->connect_error) {
-				die("Connection failed: " . $db_connection->connect_error);
-			}
+				$host = "localhost";
+				$user = "admin";
+				$password = "EoqNS14knT98sak6";
+				$database = "marketplace";
 
-			$result = mysqli_query($db_connection,'SELECT * FROM Item ORDER BY Date DESC');
+				$db_connection = new mysqli($host, $user, $password, $database);
+				if ($db_connection->connect_error) {
+					die("Connection failed: " . $db_connection->connect_error);
+				}
 
 
-/*
-			echo '<table border="1">';
-			echo '<tr>';
-			echo '<th>Item Name</th>';
-			echo '<th>Price</th>';
-			echo '<th>Description</th>';
-			echo '<th>Date</th>';
-			echo '</tr>';
+				
 
-			while($row = mysqli_fetch_array($result))
-			{
-				$date = epochToDate($row['Date']);
-				echo "<tr>";
-				echo "<td>" . $row['Name'] . "</td>";
-				echo "<td>" . $row['Price'] . "</td>";
-				echo "<td>" . $row['Description'] . "</td>";
-				echo "<td>" . $date . "</td>";
-				echo "</tr>";
-			}
-			echo "</table>";
-			*/
-}
+				$query = 'SELECT * FROM Item';
+							  
+				$sort = '';
+				if (isset($_POST["sort"])) {
+					$sort = $_POST["sortVal"];
+				}
+							  
+				$search = '';
+				if (isset($_POST["search"])) {
+					$search = $_POST["searchVal"];
+				}
+							  
+				if ($search != '') {
+					$query = $query . ' WHERE Name Like "%' . $search . '%"';
+				}
+							  
+				if ($sort != '') {
+					$query = $query . ' ORDER BY ' . $sort;
+				} else {
+					$query = $query . ' ORDER BY Date DESC';
+				}
+
+
+
+				$result = mysqli_query($db_connection, $query);
+
+				echo '<table border="1">';
+				echo '<tr>';
+				echo '<th>Item Name</th>';
+				echo '<th>Price</th>';
+				echo '<th>Description</th>';
+				echo '<th>Date</th>';
+				echo '</tr>';
+
+				while($row = mysqli_fetch_array($result))
+				{
+					$date = epochToDate($row['Date']);
+					echo "<tr>";
+					echo "<td>" . $row['Name'] . "</td>";
+					echo "<td>" . $row['Price'] . "</td>";
+					echo "<td>" . $row['Description'] . "</td>";
+					echo "<td>" . $date . "</td>";
+					echo "</tr>";
+				}
+				echo "</table>";
+				*/
 		?>
 			<div class="content">
-					<span id="span"></span>
-
+					<span id="span"><?php main();?></span>	
 
 			</div>
 
@@ -126,21 +152,21 @@
 				}
 
 				$result = 'SELECT * FROM Item';
-
+							  
 				$sort = '';
 				if (isset($_GET["sort"])) {
 					$sort = $_GET["sortVal"];
 				}
-
+							  
 				$search = '';
 				if (isset($_GET["search"])) {
 					$search = $_GET["searchVal"];
 				}
-
+							  
 				if ($search != '') {
 					$result = $result . ' WHERE Name Like "%' . $search . '%"';
 				}
-
+							  
 				if ($sort != '') {
 					$result = $result . ' ORDER BY ' . $sort;
 				} else {
@@ -159,7 +185,7 @@
 				}
 
 				echo $body;
-
+				
 			}
 
 			function generateItem($item) {
