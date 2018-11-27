@@ -14,7 +14,7 @@
 				<div class="logo">
 					<img src="../Images/umd_hub_red.jpg" alt = "UmdHub" height = 75>
 				</div>
-				
+
 				<div class="nav">
 					<ul>
 						<li style="padding-left: 55px;"><a href="#">All</li>
@@ -38,11 +38,11 @@
 							<li><input type="submit" name="sort" value="sort"</li>
 						</form>
 						<li style="padding-left: 25px;"><a href="../Profile/profile.php">Profile</li>
-						<li><a href="#">Sign Out</li>	
+						<li><a href="#">Sign Out</li>
 						<li><form action="sellItem.html"><input type="submit" value="Sell item" /></form></li>
 
-				
-							
+
+
 					</ul>
 				</div>
 			</div>
@@ -53,6 +53,10 @@
 
 		<?php
 				/*
+
+		<div class="containerBody">
+
+			<?php=
 				function epochToDate($date) {
 					return date("Y-m-d H:i:s", substr($date, 0, 10));
 				}
@@ -66,6 +70,7 @@
 				if ($db_connection->connect_error) {
 					die("Connection failed: " . $db_connection->connect_error);
 				}
+
 
 				
 
@@ -118,6 +123,7 @@
 		?>
 			<div class="content">
 					<span id="span"><?php main();?></span>	
+
 			</div>
 
 
